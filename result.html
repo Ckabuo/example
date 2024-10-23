@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VINcheck</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/VINcheck_logo.png" type="image/x-icon" />
+    <!-- Links -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/f540c9d3c0.js" crossorigin="anonymous"></script>
+    <script src="./sandbox.js"></script>
+    <style>
+      body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif; 
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Nav section -->
+    <div class="">
+      <nav class="navbar bg-primary px-3">
+        <div class="">
+          <a class="navbar-brand" href="#">
+            <img
+              src="/Img/VINcheck_logo.png"
+              alt="VINcheck"
+              class="brand-logo"
+            />
+          </a>
+        </div>
+        <!--Nav buttons -->
+        <ul class="navbar-nav ms-auto text-secondary flex-row">
+          <!-- Profile button -->
+          <li class="nav-item">
+            <!--  <a class="nav-link btn btn-outline-primary circular-btn" href="./profile">
+                        <i class="fa-solid fa-user"></i>
+                    </a> -->
+            <a class="nav-link btn h6" href="/dashboard"
+              >Hello, <%= username %></a
+            >
+          </li>
+          <!-- Log out button -->
+          <li class="nav-item ps-3">
+            <a class="btn nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- VIN Result Data -->
+    <div class="container mt-5">
+      <h1 class="text-center">
+        <strong>VINCheck REPORT SUMMARY</strong>
+      </h1>
+    
+      <table class="table table-bordered table-striped">
+        <!-- Basic Information -->
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Basic Information</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>VIN</th>
+            <td><%= data.intro.vin || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Make</th>
+            <td><%= data.basic.make || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Model</th>
+            <td><%= data.basic.model || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Year</th>
+            <td><%= data.basic.year || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Trim</th>
+            <td><%= data.basic.trim || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Body Type</th>
+            <td><%= data.basic.body_type || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Vehicle Type</th>
+            <td><%= data.basic.vehicle_type || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Doors</th>
+            <td><%= data.basic.doors || 'N/A' %></td>
+          </tr>
+        </tbody>
+
+        <!-- Engine Section -->
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Engine Specification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Engine Size</th>
+            <td><%= data.engine.engine_size || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Engine Description</th>
+            <td><%= data.engine.engine_description || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Engine Cylinders</th>
+            <td><%= data.engine.engine_number_of_cylinders || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Engine Manufacturer</th>
+            <td><%= data.engine.engine_manufacturer || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Displacement (cci)</th>
+            <td><%= data.engine.displacement_(cc) || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Displacement (ci)</th>
+            <td><%= data.engine.displacement_(ci) || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Displacement (l)</th>
+            <td><%= data.engine.displacement_(l) || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Engine Head</th>
+            <td><%= data.engine.engine_head || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Engine Model</th>
+            <td><%= data.engine.engine_model || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Engine Power (kW)</th>
+            <td><%= data.engine.engine_power_kw || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Valve Train Design</th>
+            <td><%= data.engine.valve_train_design || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Engine Configuration</th>
+            <td><%= data.engine.engine_configuration || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Engine Brake From</th>
+            <td><%= data.engine.engine_brake_from || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Engine Brake To</th>
+            <td><%= data.engine.engine_brake_to || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Engine Aspiration</th>
+            <td><%= data.engine.engine_aspiration || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Engine Horsepower</th>
+            <td><%= data.engine.engine_horsepower || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Automatic Gearbox</th>
+            <td><%= data.engine.automatic_gearbox || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Emission Standard</th>
+            <td><%= data.engine.emission_standard || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Turbo</th>
+            <td><%= data.engine.turbo || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Cooling Type</th>
+            <td><%= data.engine.cooling_type || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Engine Stroke Cycle</th>
+            <td><%= data.engine.engine_stroke_cycles || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Horsepower</th>
+            <td><%= data.engine?.other || 'N/A' %></td>
+          </tr>
+        </tbody>
+        
+        <!-- Manufacturer Section -->
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Manufacturer Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Manufacturer</th>
+            <td><%= data.manufacturer.manufacturer || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Region</th>
+            <td><%= data.manufacturer.region || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Country</th>
+            <td><%= data.manufacturer.country || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Plant Location</th>
+            <td><%= data.manufacturer.plant_country_name || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Plant City</th>
+            <td><%= data.manufacturer.plant_city || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Note</th>
+            <td><%= data.manufacturer.note || 'N/A' %></td>
+          </tr>
+        </tbody>
+        
+        <!-- Transmission Section -->
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Transmission Specifications</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td><%= data.transmission.transmission || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Style</th>
+            <td><%= data.transmission.transmission_style || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Speeds</th>
+            <td><%= data.transmission.transmission_speed || 'N/A' %></td>
+          </tr>
+        </tbody>
+
+        <!-- Restraint Section -->
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Safety System</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Curtain Air Bag Locations</th>
+            <td><%= data.restraint.curtain_air_bag_locations || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Front Air Bag Locations</th>
+            <td><%=  data.restraint.front_air_bag_locations || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Side Air Bag Locations</th>
+            <td><%=  data.restraint.side_air_bag_locations || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Seat Belt Type</th>
+            <td><%=  data.restraint.seat_belt_type || 'N/A' %></td>
+          </tr>
+        </tbody>
+
+        <!-- Dimensions Section -->
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Dimensions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Gross Vehicle Weight Rating (GVWR)</th>
+            <td><%= data.dimensions.gvwr || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>width</th>
+            <td><%= data.dimensions.width || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Length</th>
+            <td><%= data.dimensions.length || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Height</th>
+            <td><%= data.dimensions.height || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Wheelbase</th>
+            <td><%= data.dimensions.wheelbase || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Cargo Volume</th>
+            <td><%= data.dimensions.cargo_volume || 'N/A' %></td>
+          </tr>
+        </tbody>
+
+        <!-- Drivetrain Section -->
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Drivetrain</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Drive Type</th>
+            <td><%= data.drivetrain.drive_type || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Axles</th>
+            <td><%= data.drivetrain.axles || 'N/A' %></td>
+          </tr>
+        </tbody>
+
+        <!-- Braking Section -->
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Braking System</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Rear Brake Type</th>
+            <td><%= data.braking.rear_brake_type || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Front Brake Type</th>
+            <td><%= data.braking.front_brake_type || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Anti-lock Braking System (ABS)</th>
+            <td><%= data.braking.anti_brake_system || 'N/A' %></td>
+          </tr>
+        </tbody>
+
+        <!-- Suspension Section -->
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Suspension System</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Steering Type</th>
+            <td><%= data.suspension.steering_type || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Power Steering</th>
+            <td><%= data.suspension.power-steering || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Rear Suspension</th>
+            <td><%= data.suspension.rear_suspension || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Front Suspension</th>
+            <td><%= data.suspension.front_suspension || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Rear Spring Type</th>
+            <td><%= data.suspension.rear_spring_type || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Front Spring Type</th>
+            <td><%= data.suspension.front_spring_type || 'N/A' %></td>
+          </tr>
+        </tbody>
+
+        <!-- Colors Section -->
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Colors</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Interior Trim</th>
+            <td><%= data.colors.interior || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Exterior Color</th>
+            <td><%= data.colors.exterior || 'N/A' %></td>
+          </tr>
+        </tbody>
+
+        <!-- Seating Section -->
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Seating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Standard Seating</th>
+            <td><%= data.seating.standard_seating || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Number of Seat Rows</th>
+            <td><%= data.seating.number_of_seat_rows || 'N/A' %></td>
+          </tr>
+        </tbody>
+
+        <!-- Weight Section -->
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Curb Weight</th>
+            <td><%= data.weight.curb_weight || 'N/A' %></td>
+          </tr>
+        </tbody>
+
+        <!-- Wheels and Tires Section -->
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Wheels and Tires</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Wheel Size Front (inches)</th>
+            <td><%= data.wheels_and_tires.wheel_size_front_(inches) || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Wheel Size Rear (inches)</th>
+            <td><%= data.wheels_and_tires.wheel_size_rear_(inches)%></td>
+          </tr>
+        </tbody>
+
+        <!-- Fuel Section -->
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Fuel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Highway Mileage</th>
+            <td><%= data.fuel.highway_mileage || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>City Mileage</th>
+            <td><%= data.fuel.city_mileage || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Fuel Type</th>
+            <td><%= data.fuel.fuel_type || 'N/A' %></td>
+          </tr>
+          <tr>
+            <th>Fuel Capacity</th>
+            <td><%= data.fuel.fuel_capacity || 'N/A' %></td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+    <!-- Toast Container for Messages -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div id="toastMessage" class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            <!-- Toast message will be dynamically inserted here -->
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Footer section -->
+    <footer class="footer-area bg_color">
+        <div class="footer-top">
+          <div class="container">
+            <div class="row" style="text-align: center">
+              <div class="col-lg-3 col-md-6">
+                <div
+                  class="f_widget company-widget wow fadeInLeft"
+                  data-wow-delay="0.2s"
+                  style="
+                    visibility: visible;
+                    animation-delay: 0.2s;
+                    animation-name: fadeInLeft;
+                  "
+                >
+                  <h3 class="f-title f_600 t_color f_size_18">
+                    Subscribe to Newsletter
+                  </h3>
+                  <p class=".p">
+                    Don’t miss any updates of our Products and Services.!
+                  </p>
+                  <!-- <% if (typeof message!== 'undefined') { %>
+                                  <p class="successMessage error-message text-center">
+                                      <%= message %>
+                                  </p>
+                              <% } %> -->
+
+                  <form
+                    action="/subscribe"
+                    id="subscribeForm"
+                    class="f_subscribe_two"
+                    method="POST"
+                    novalidate="true"
+                    _lpchecked="1"
+                  >
+                    <p id="alert" style="display: none"></p>
+                    <input
+                      type="email"
+                      name="email"
+                      class="form-control memail"
+                      placeholder="Enter your Email"
+                      required
+                    />
+                    <button
+                      class="btn btn_get btn_get_two btn-primary"
+                      type="submit"
+                    >
+                      Subscribe
+                    </button>
+                    <!-- <p class="mchimp-errmessage" style="display: none;"></p> -->
+                  </form>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <div
+                  class="f_widget about-widget pl_70 wow fadeInLeft"
+                  data-wow-delay="0.4s"
+                  style="
+                    visibility: visible;
+                    animation-delay: 0.4s;
+                    animation-name: fadeInLeft;
+                  "
+                >
+                  <h3 class="f-title f_600 t_color f_size_18">About VINcheck</h3>
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <div
+                  class="f_widget social-widget pl_70 wow fadeInLeft"
+                  data-wow-delay="0.8s"
+                  style="
+                    visibility: visible;
+                    animation-delay: 0.8s;
+                    animation-name: fadeInLeft;
+                  "
+                >
+                  <h3 class="f-title f_600 t_color f_size_18">Connect With Us</h3>
+                  <div class="f_social_icon">
+                    <a href="#" class="fab fa-linkedin"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-x-twitter"></a>
+                    <a href="#" class="fab fa-facebook"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer_bg">
+            <div class="footer_bg_one"></div>
+            <div class="footer_bg_two"></div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-12 col-sm-12">
+                <p class="mb-0 f_400">
+                  © BoldByte Inc.. 2024 All rights reserved.
+                </p>
+              </div>
+              <!-- <div class="col-lg-6 col-sm-5 text-right">
+                          <p>Made with <i class="icon_heart"></i> in <a href="http://cakecounter.com" target="_blank">CakeCounter</a></p>
+                      </div> -->
+            </div>
+          </div>
+        </div>
+    </footer>
+
+    <script>
+      function hideRowsAndHeaders() {
+          const allTables = document.querySelectorAll('table');
+  
+          allTables.forEach(table => {
+              const theads = table.querySelectorAll('thead');
+              const tbodies = table.querySelectorAll('tbody');
+  
+              tbodies.forEach((tbody, index) => {
+                  let allRowsHidden = true;
+  
+                  tbody.querySelectorAll('tr').forEach(row => {
+                      let hideRow = true;
+  
+                      row.querySelectorAll('td').forEach(cell => {
+                          const cellValue = cell.textContent.trim();
+                          if (cellValue !== '' && cellValue !== 'N/A') {
+                              hideRow = false;
+                          }
+                      });
+  
+                      if (hideRow) {
+                          row.style.display = 'none';
+                      } else {
+                          row.style.display = '';
+                          allRowsHidden = false;
+                      }
+                  });
+  
+                  if (allRowsHidden) {
+                      theads[index].style.display = 'none';
+                  } else {
+                      theads[index].style.display = '';
+                  }
+              });
+          });
+      }
+  
+      hideRowsAndHeaders();
+  </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@5.2.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
